@@ -1,1 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>ExcuseReady – Epic Excuse Generator On‑Demand</title>
+
+  <meta name="description" content="ExcuseReady generates fast, believable and funny excuses for work, friends, love and family. Choose a category and get an instant excuse ready to send.">
+
+  <link rel="canonical" href="https://yourdomain.com/">
+
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffd447">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ExcuseReady – Epic Excuse Generator On‑Demand">
+  <meta property="og:description" content="Instant excuses for work, friends, love and family. Believable, funny and ready to send.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta property="og:image" content="https://yourdomain.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ExcuseReady – Epic Excuse Generator On‑Demand">
+  <meta name="twitter:description" content="Instant excuses for work, friends, love and family.">
+  <meta name="twitter:image" content="https://yourdomain.com/og-image.png">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ExcuseReady",
+    "url": "https://yourdomain.com/",
+    "applicationCategory": "Utility",
+    "description": "Instant excuse generator for work, friends, love and family.",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Person",
+      "name": "Antonio"
+    }
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='black'/%3E%3Ctext x='50%25' y='62%25' font-size='70' text-anchor='middle' fill='white' font-family='Arial, sans-serif'%3EER%3C/text%3E%3C/svg%3E">
+
+  <!-- CSS -->
+  <link rel="preload" href="style.css" as="style" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Desktop side banners -->
+  <div class="banner-wrapper">
+    <div class="banner-left"></div>
+    <div class="banner-right"></div>
+  </div>
+
+  <div class="page">
+    <div class="container">
+
+      <!-- HEADER -->
+      <header>
+        <div class="logo-row">
+          <div class="logo-left">
+            <div class="logo-badge" aria-hidden="true">
+              <div class="logo-badge-inner"></div>
+              <div class="logo-badge-letter">ER</div>
+            </div>
+            <div>
+              <div class="site-title">
+                <span class="site-title-main">EXCUSE·READY</span>
+                <span class="site-title-tag">excuses on‑demand</span>
+                <span class="badge-beta">
+                  <span>⚡</span> excuse generator
+                </span>
+              </div>
+              <p class="subtitle">Life is messy. Excuses aren’t.</p>
+            </div>
+          </div>
+
+          <!-- Dark mode toggle -->
+          <button class="theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Toggle light/dark theme" aria-pressed="false">
+            <span id="themeToggleEmoji">🌙</span>
+            <span id="themeToggleText">Dark mode</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <h1 class="hero-main-title">
+            <span class="hero-highlight">Epic excuses</span> in one tap.
+          </h1>
+
+          <p class="hero-claim">
+            Work, friends, love, family or awkward situations: pick a category and ExcuseReady creates the excuse for you.
+          </p>
+
+          <p class="hero-tagline">
+            The excuse generator that doesn’t judge you. It just saves your day.
+          </p>
+
+          <div class="hero-pills">
+            <span class="pill"><strong>5</strong> socially questionable categories</span>
+            <span class="pill"><strong>Short</strong> or <strong>long</strong>, your choice</span>
+            <span class="pill"><strong>Share</strong> on WhatsApp, Telegram & more</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <button class="btn-primary" id="btnGenerateHero" type="button">
+              <span>🎲 Generate an excuse</span>
+            </button>
+            <button class="btn-secondary" id="btnHeroCycle" type="button">
+              <span>🔀 Change category</span>
+            </button>
+          </div>
+        </div>
+
+        <aside class="hero-side-card" aria-hidden="true">
+          <div class="hero-side-inner">
+            <div class="hero-side-title">Typical use</div>
+            <div class="hero-side-main">
+              It’s Monday, you’re late, and your brain is still in airplane mode.
+            </div>
+            <ul class="hero-side-bullets">
+              <li><span>✅</span><span>Select the right category, tap the button, copy.</span></li>
+              <li><span>✅</span><span>Tomorrow pretend it was all spontaneous.</span></li>
+              <li><span>✅</span><span>Your conscience? It’ll come back later — survival first.</span></li>
+            </ul>
+            <div class="hero-side-footnote">
+              Pro tip: use it with self‑irony, not for real damage.
+            </div>
+          </div>
+        </aside>
+      </section>
+      <!-- DAILY EXCUSE -->
+      <section class="daily-excuse-card" id="dailyExcuseCard" aria-label="Daily excuse">
+        <div class="daily-excuse-header">
+          <div class="daily-excuse-title">
+            <span>🎁</span>
+            <span>Excuse of the Day</span>
+          </div>
+          <div class="daily-excuse-meta" id="dailyExcuseMeta">
+            Updated every 24 hours (give or take).
+          </div>
+        </div>
+
+        <div class="daily-excuse-text" id="dailyExcuseText"></div>
+
+        <div class="daily-excuse-actions">
+          <button class="btn-mini" id="dailyUseBtn" type="button">
+            <span>👉</span><span>Use this as a base</span>
+          </button>
+          <button class="btn-mini" id="dailyNewBtn" type="button">
+            <span>🎲</span><span>New daily excuse</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Compact double horizontal banners -->
+      <div class="adsterra-central-double">
+
+        <div class="ad-box-horizontal">
+          <script>
+            atOptions = {
+              'key' : '646ce9c552d91bd2a3e3fac5fa8c28b3',
+              'format' : 'iframe',
+              'height' : 110,
+              'width' : 300,
+              'params' : {}
+            };
+          </script>
+          <script src="https://www.highperformanceformat.com/646ce9c552d91bd2a3e3fac5fa8c28b3/invoke.js"></script>
+        </div>
+
+        <div class="ad-box-horizontal">
+          <script>
+            atOptions = {
+              'key' : '646ce9c552d91bd2a3e3fac5fa8c28b3',
+              'format' : 'iframe',
+              'height' : 110,
+              'width' : 300,
+              'params' : {}
+            };
+          </script>
+          <script src="https://www.highperformanceformat.com/646ce9c552d91bd2a3e3fac5fa8c28b3/invoke.js"></script>
+        </div>
+
+      </div>
+
+      <!-- MAIN GENERATOR PANEL -->
+      <section class="card-main" aria-label="Excuse generator">
+        <div class="card-main-header">
+          <div class="card-main-title">
+            <span>🎛️ ExcuseReady Panel</span>
+            <span class="chip-live">
+              <span class="chip-live-dot"></span>
+              live, generator active
+            </span>
+          </div>
+
+          <div class="card-stats">
+            <div class="stat-pill" id="statTotal">
+              <span>📊</span>
+              <span>Excuses generated: 0</span>
+            </div>
+
+            <div class="stat-pill" id="statMostUsed">
+              <span>🏆</span>
+              <span>Top category: –</span>
+            </div>
+
+            <div class="stat-pill">
+              <span>🎖️</span>
+              <span class="badge-label" id="badgeLabel">Excuse level: Polite Beginner</span>
+            </div>
+
+            <!-- FAST MODE -->
+            <button class="stat-pill stat-pill-toggle" id="fastModeToggle" type="button" aria-pressed="false">
+              <span class="fast-mode-indicator" id="fastModeDot"></span>
+              <span id="fastModeLabel">Fast mode: OFF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CATEGORIES -->
+        <section aria-label="Available categories">
+          <h2 class="sr-only">Available categories</h2>
+
+          <div class="category-tabs" id="categoryTabs">
+            <button class="category-tab active" data-category="work"><span class="emoji">💼</span><span>Work</span></button>
+            <button class="category-tab" data-category="friends"><span class="emoji">🍻</span><span>Friends</span></button>
+            <button class="category-tab" data-category="love"><span class="emoji">❤️</span><span>Love</span></button>
+            <button class="category-tab" data-category="family"><span class="emoji">🏡</span><span>Family</span></button>
+            <button class="category-tab" data-category="other"><span class="emoji">🎭</span><span>Other</span></button>
+          </div>
+
+          <p class="category-help">
+            Choose who you need to bail on, then tap. The rest is excuse‑math.
+          </p>
+        </section>
+
+        <!-- GENERATED EXCUSE -->
+        <section class="excuse-box-wrapper" aria-label="Generated excuse">
+          <h3 class="sr-only">Generated excuse</h3>
+
+          <div class="excuse-box">
+            <div class="excuse-category-label" id="excuseCategoryLabel">
+              <span>Category:</span><span id="excuseCategoryName">Work</span>
+            </div>
+
+            <div class="excuse-text" id="excuseText" aria-live="polite"></div>
+
+            <div class="excuse-tagline">
+              <span>💡</span>
+              <span>Works better if you smile like it’s totally normal.</span>
+            </div>
+          </div>
+
+          <div class="excuse-actions">
+            <button class="btn-primary" id="btnGenerate"><span>🎲 Random excuse</span></button>
+            <button class="btn-ghost" id="btnShortExcuse"><span>⚡</span><span>Short excuse</span></button>
+            <button class="btn-ghost" id="btnLongExcuse"><span>📜</span><span>Long excuse</span></button>
+            <button class="btn-ghost" id="btnCopy"><span>📋</span><span>Copy excuse</span></button>
+            <button class="btn-ghost" id="btnCopyWithCategory"><span>📝</span><span>Copy with category + signature</span></button>
+            <button class="btn-ghost btn-ghost-danger" id="btnPanic"><span>🚨</span><span>Panic mode</span></button>
+            <p class="panic-hint" id="panicHint"></p>
+          </div>
+
+          <!-- SHARE -->
+          <section class="share-row">
+            <h2 class="sr-only">Share your excuse</h2>
+
+            <div class="share-label">
+              <span>🔗</span>
+              <span>Share your excuse instantly:</span>
+            </div>
+
+            <div class="share-buttons">
+              <button class="share-btn whatsapp" data-share="whatsapp">WhatsApp</button>
+              <button class="share-btn telegram" data-share="telegram">Telegram</button>
+              <button class="share-btn facebook" data-share="facebook">Facebook</button>
+              <button class="share-btn twitter" data-share="twitter">X/Twitter</button>
+              <button class="share-btn email" data-share="email">Email</button>
+              <button class="share-btn link" data-share="link">Copy link</button>
+            </div>
+          </section>
+
+          <div class="status-row">
+            <div class="status-pill" id="statusRandomInfo">
+              <span class="status-dot"></span>
+              <span>Random active: no predictable repeats.</span>
+            </div>
+            <div class="status-random">
+              <span class="dot"></span>
+              <span>Built from combinable fragments for hundreds of unique excuses.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Double 250x200 banners -->
+        <section class="ad-section adsterra-double-container">
+
+          <div class="ad-box">
+            <script>
+              atOptions = {
+                'key' : '0b242cdb7173137f08b67b181b3688d4',
+                'format' : 'iframe',
+                'height' : 200,
+                'width' : 250,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/0b242cdb7173137f08b67b181b3688d4/invoke.js"></script>
+          </div>
+
+          <div class="ad-box">
+            <script>
+              atOptions = {
+                'key' : '0b242cdb7173137f08b67b181b3688d4',
+                'format' : 'iframe',
+                'height' : 200,
+                'width' : 250,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/0b242cdb7173137f08b67b181b3688d4/invoke.js"></script>
+          </div>
+
+        </section>
+      </section>
+    </main>
+
+    <!-- MOBILE STICKY BAR -->
+    <div class="mobile-sticky-bar" id="mobileStickyBar">
+      <div class="mobile-sticky-inner">
+        <div class="mobile-sticky-label">
+          <strong>Quick excuse</strong>
+          <span>Generate, switch or copy without moving your thumb.</span>
+        </div>
+
+        <div class="mobile-sticky-buttons">
+          <button class="mobile-sticky-btn mobile-sticky-btn-primary" id="mobileBtnGenerate">
+            <span class="icon">🎲</span><span>Excuse</span>
+          </button>
+
+          <button class="mobile-sticky-btn" id="mobileBtnCycle">
+            <span class="icon">🔀</span><span>Category</span>
+          </button>
+
+          <button class="mobile-sticky-btn" id="mobileBtnCopy">
+            <span class="icon">📋</span><span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCyYOT6CLusuaGDUs4ML-U1isyXWditrw",
+        authDomain: "scuopronta.firebaseapp.com",
+        projectId: "scuopronta",
+        storageBucket: "scuopronta.appspot.com",
+        messagingSenderId: "617863746356",
+        appId: "1:617863746356:web:211b7a331c2c226e81e0bf"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    </script>
+
+    <!-- Main script -->
+    <script src="script.js" defer></script>
+
+    <!-- SEO SECTION -->
+    <section class="seo-section">
+      <h2>What is ExcuseReady (besides saving your day)</h2>
+
+      <p>
+        ExcuseReady is the excuse generator you didn’t know you needed — and will use
+        more often than you’d like to admit. Tap a button, get a believable, elegant,
+        or slightly desperate excuse. That’s it. No judgment.
+      </p>
+
+      <p>
+        Excuses are created by combining hundreds of carefully written fragments with
+        irony and a touch of “I can’t do this today.” Each category has its own vibe:
+        professional for work, diplomatic for family, affectionately tired for love,
+        and brutally honest for friends (they’ll see through you anyway).
+      </p>
+
+      <h3>Why does an excuse generator exist?</h3>
+      <p>
+        Because life is complicated, time is short, and messages must be sent. Sometimes
+        you need a quick line that sounds good, feels real, and doesn’t start a three‑hour
+        debate. ExcuseReady does exactly that: it prevents keyboard panic.
+      </p>
+
+      <h3>Frequently asked questions (that nobody asked, but still)</h3>
+      <p><strong>Are the excuses always different?</strong> Yes. If they repeat, blame karma.</p>
+      <p><strong>Does it work on mobile?</strong> Of course. It was born for when you’re already late.</p>
+      <p><strong>Do I need to install it?</strong> No, but you can add it to your Home Screen and pretend it’s a serious app.</p>
+    </section>
+
+    <!-- Panic hint script -->
+    <script>
+      const panicHint = document.getElementById("panicHint");
+
+      function updatePanicHint() {
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        if (isMobile) {
+          panicHint.textContent = "Tap for Panic. Hold for Super Panic (only for brave souls).";
+        } else {
+          panicHint.textContent = "Click for Panic. Hold 1 second for Super Panic (you’ve been warned).";
+        }
+      }
+
+      updatePanicHint();
+    </script>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-row">
+          <p class="footer-disclaimer">
+            <strong>A serious disclaimer on a not‑so‑serious site:</strong>
+            the excuses generated here are meant for fun and stress relief.
+            Don’t use them to hurt, scam, manipulate or dodge important responsibilities.
+            Karma reads the fine print.
+          </p>
+
+          <div class="footer-links">
+            <span class="footer-pill">Made with 🧠+😅 in Italy</span>
+          </div>
+        </div>
+
+        <div class="footer-mini">
+          <span>
+            ExcuseReady is not responsible for angry bosses, suspicious partners or vengeful friends.
+            You generate it, you handle it.
+          </span>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- container -->
+</div> <!-- page -->
+
+</body>
+</html>
 
